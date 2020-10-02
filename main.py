@@ -13,5 +13,5 @@ __version__ = "Fall 2020"
 def main():
     """Main entry point of prgram."""
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
