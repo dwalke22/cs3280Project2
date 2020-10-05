@@ -12,6 +12,8 @@ __version__ = "Fall 2020"
 
 def main():
     """Main entry point of prgram."""
+    ip = input("Please enter an IP Adress: ")
+    net_mask = input("Please enter a subnet mask: ")
 
 if __name__ == "__main__":
     main()
