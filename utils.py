@@ -26,3 +26,10 @@ def verify_ipv4(ip_address):
     if ip_regex.match(ip_address):
         real = True
     return real
+
+def verify_netmask(net_mask):
+    """Verifies that the net mask is vaild"""
+    if net_mask is None:
+        raise ValueError('Net Mask cannot be None.')
+    real = False
+    return real
