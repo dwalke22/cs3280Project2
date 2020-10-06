@@ -14,15 +14,13 @@ __version__ = "Fall 2020"
 
 def main():
     """Main entry point of prgram."""
-    ip = input("Please enter an IP Adress: ")
+    ip_address = input("Please enter an IP Adress: ")
     net_mask = input("Please enter a subnet mask: ")
     letter_regex = re.compile(r'[a-zA-Z:]')
-    if letter_regex.search(ip):
-        utils.verify_ipv6(ip)
+    if letter_regex.search(ip_address):
+        utils.verify_ipv6(ip_address)
     else:
-        utils.verify_ipv4(ip)
-
-    
+        utils.verify_ipv4(ip_address)
 
 if __name__ == "__main__":
     main()

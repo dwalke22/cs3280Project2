@@ -4,22 +4,25 @@ Provides utility method for bitwises-Add
 """
 import re
 
-def verify_ipv6(ip):
+def verify_ipv6(ip_address):
     """Verifies that the ip is a valid IPv6 address"""
-    if ip is None:
+    if ip_address is None:
         raise ValueError('IP Adress cannot be None.')
-    ip_regex = re.compile(r'^(?:[A-F0-9]{1,4}:){6}(?:[A-F0-9]{1,4}:[A-F0-9]{1,4}|(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))$')
+    ip_regex = re.compile(r"""^(?:[A-F0-9]{1,4}:){6}(?:[A-F0-9]{1,4}:
+            [A-F0-9]{1,4}|(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?
+            [0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))$""")
     real = False
-    if ip_regex.match(ip):
+    if ip_regex.match(ip_address):
         real = True
     return real
 
-def verify_ipv4(ip):
+def verify_ipv4(ip_address):
     """Verifies that the ip is a vaild IPv4 address"""
-    if ip is None:
+    if ip_address is None:
         raise ValueError('IP Adress cannot be None.')
-    ip_regex = re.compile(r'^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')
+    ip_regex = re.compile(r"""^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}
+            (?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$""")
     real = False
-    if ip_regex.match(ip):
+    if ip_regex.match(ip_address):
         real = True
     return real
