@@ -9,8 +9,8 @@ def verify_ipv6(ip_address):
     if ip_address is None:
         raise ValueError('IP Adress cannot be None.')
     ip_regex = re.compile(r"""^(?:[A-F0-9]{1,4}:){6}(?:[A-F0-9]{1,4}:
-            [A-F0-9]{1,4}|(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?
-            [0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))$""")
+            [A-F0-9]{1,4}|(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.)
+            {3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))$""", re.X)
     real = False
     if ip_regex.match(ip_address):
         real = True
@@ -21,7 +21,7 @@ def verify_ipv4(ip_address):
     if ip_address is None:
         raise ValueError('IP Adress cannot be None.')
     ip_regex = re.compile(r"""^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}
-            (?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$""")
+            (?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$""", re.X)
     real = False
     if ip_regex.match(ip_address):
         real = True
