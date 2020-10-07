@@ -20,8 +20,9 @@ def verify_ipv4(ip_address):
 def verify_netmask(net_mask):
     """Verifies that the net mask is vaild"""
     net_regex = re.compile(r"""(?:^(0?[1-9]|[12][0-9]|3[0-2])$)
-            |^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}
-            (?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$""", re.X)
+            |^(?:(?:255\.)(?:0|128|192|224|240|248|252|254|255\.)
+            (?:0|128|192|224|240|248|252|254|255)\.)
+            (?:0|128|192|224|240|248|252|254|255)$""", re.X)
     return net_regex.search(net_mask)
 
 def convert_netmask(net_mask):
