@@ -31,5 +31,15 @@ class TestUtils(unittest.TestCase):
     def test_valid_net_ipv4(self):
         self.assertTrue(utils.verify_netmask("160.010.25.007"))
 
+    def test_proper_netmask_convers(self):
+        expected = "11111111.11111111.00000000.00000000"
+        result = utils.convert_netmask("16")
+        self.assertEqual(expected, result)
+
+    def test_proper_ipv4_net_conver(self):
+        expected = "11111111.11111111.00000000.00000000"
+        result = utils.convert_ip_netmask("255.255.0.0")
+        self.assertEqual(expected, result)
+
 if __name__ == "__main__":
     unittest.main()
