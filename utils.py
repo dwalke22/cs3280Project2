@@ -29,37 +29,16 @@ def convert_netmask(net_mask):
     """Converts a net mask to IPv4"""
     ones = int(net_mask)
     zeros = 32 - ones
-    mask = ""
-    for one in range(ones):
-        if ((one + 1) % 8) == 0:
-            mask += "1."
+    mask = ("1" * ones) + ("0" * zeros)
+    bits = [mask[i:i+8] for i in range(0, len(mask), 8)]
+    n_mask = ""
+    for bit in bits:
+        if n_mask.count(".") == 3:
+            n_mask += str(int(bit, 2))
         else:
-            mask += "1"
-    for _ in range(zeros):
-        length = len(mask)
-        if length % 9 == 7:
-            mask += "0."
-        else:
-            mask += "0"
-    return mask[:35]
-
-def convert_ip_netmask(net_mask):
-    """Converts a given net mask in ipv4 to 1s and 0s"""
-    numbers = net_mask.split(".")
-    mask = ""
-    rang = len(numbers)
-    for i in range(rang):
-        binary = bin(int(numbers[i]))
-        string = binary[2:]
-        if len(string) != 8:
-            zeros = 8 - len(string)
-            string += "0" * zeros
-        if i < (rang - 1):
-            mask += string + "."
-        else:
-            mask += string
-    return mask
-
+            n_mask += str(int(bit, 2)) + "."
+    return n_mask
+    
 def calculate_ipv4_subnet(ip_address, net_mask):
     """Calculates the subnet of an IPv4 address"""
     ip_bits = ip_address.split(".")

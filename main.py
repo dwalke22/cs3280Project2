@@ -19,7 +19,6 @@ def calculate_subnet_ipv4(ip_address, net_mask):
             mask = utils.convert_netmask(net_mask)
             utils.calculate_ipv4_subnet(ip_address, mask)
         else:
-            mask = utils.convert_ip_netmask(net_mask)
             utils.calculate_ipv4_subnet(ip_address, mask)
     else:
         print("IP Address or Net Mask is not Real")
