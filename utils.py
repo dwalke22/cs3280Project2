@@ -68,8 +68,8 @@ def calculate_ipv4_subnet(ip_address, net_mask):
     for bit in range(bits):
         ip_bit = int(ip_bits[bits - 1])
         net_bit = int(net_bits[bits - 1])
-        if bit % 4:
-            subnet = ip_bit & net_bit
+        if (bit + 1) % 4 == 0:
+            subnet += str((ip_bit & net_bit))
         else:
-            subnet = str((ip_bit & net_bit)) + "."
-    print(subnet)
+            subnet += str((ip_bit & net_bit)) + "."
+    return subnet
