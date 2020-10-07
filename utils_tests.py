@@ -29,7 +29,7 @@ class TestUtils(unittest.TestCase):
         self.assertTrue(utils.verify_netmask("20"))
 
     def test_valid_net_ipv4(self):
-        self.assertTrue(utils.verify_netmask("160.010.25.007"))
+        self.assertTrue(utils.verify_netmask("255.255.0.0"))
 
     def test_proper_netmask_convers(self):
         expected = "11111111.11111111.00000000.00000000"
@@ -39,6 +39,11 @@ class TestUtils(unittest.TestCase):
     def test_proper_ipv4_net_conver(self):
         expected = "11111111.11111111.00000000.00000000"
         result = utils.convert_ip_netmask("255.255.0.0")
+        self.assertEqual(expected, result)
+
+    def test_ipv4_subnet(self):
+        expected = "160.10.208.0"
+        result = utils.calculate_ipv4_subnet("160.10.208.51", "255.255.254.0")
         self.assertEqual(expected, result)
 
 if __name__ == "__main__":

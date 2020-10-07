@@ -22,7 +22,7 @@ def verify_netmask(net_mask):
     net_regex = re.compile(r"""(?:^(0?[1-9]|[12][0-9]|3[0-2])$)
             |^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}
             (?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$""", re.X)
-    return net_regex.match(net_mask)
+    return net_regex.search(net_mask)
 
 def convert_netmask(net_mask):
     """Converts a net mask to IPv4"""
@@ -61,4 +61,15 @@ def convert_ip_netmask(net_mask):
 
 def calculate_ipv4_subnet(ip_address, net_mask):
     """Calculates the subnet of an IPv4 address"""
-    print(ip_address + " " + net_mask)
+    ip_bits = ip_address.split(".")
+    net_bits = net_mask.split(".")
+    subnet = ""
+    bits = len(ip_bits)
+    for bit in range(bits):
+        ip_bit = int(ip_bits[bits - 1])
+        net_bit = int(net_bits[bits - 1])
+        if bit % 4:
+            subnet = ip_bit & net_bit
+        else:
+            subnet = str((ip_bit & net_bit)) + "."
+    print(subnet)
