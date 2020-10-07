@@ -38,18 +38,18 @@ def convert_netmask(net_mask):
         else:
             n_mask += str(int(bit, 2)) + "."
     return n_mask
-    
+
 def calculate_ipv4_subnet(ip_address, net_mask):
     """Calculates the subnet of an IPv4 address"""
     ip_bits = ip_address.split(".")
     net_bits = net_mask.split(".")
     subnet = ""
-    bits = len(ip_bits)
-    for bit in range(bits):
-        ip_bit = int(ip_bits[bits - 1])
-        net_bit = int(net_bits[bits - 1])
-        if (bit + 1) % 4 == 0:
-            subnet += str((ip_bit & net_bit))
+    for bit in range(4):
+        ip_bit = int(ip_bits[bit])
+        net_bit = int(net_bits[bit])
+        subnet_bit = ip_bit & net_bit
+        if subnet.count(".") == 3:
+            subnet += str(subnet_bit)
         else:
-            subnet += str((ip_bit & net_bit)) + "."
+            subnet += str(subnet_bit) + "."
     return subnet
