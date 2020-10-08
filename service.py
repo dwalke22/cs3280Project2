@@ -3,6 +3,7 @@
 HTTP server for calculating subnet
 """
 import http.server
+import main
 
 __author__ = "David Walker"
 __version__ = "Fall 2020"
@@ -26,7 +27,7 @@ class Project2Server(http.server.BaseHTTPRequestHandler):
                 self.send_error(404, 'Resource must begin with: operation')
 
 
-            start = len('operation') + 1
+            start = len('subnet') + 1
             query = resource[start:].split('&')
             print(query)
 
@@ -45,7 +46,7 @@ class Project2Server(http.server.BaseHTTPRequestHandler):
         Parameters:
         query - the parameters provided to the query
         '''
-        body = 'Hello, ' + ' '.join(word.capitalize() for word in query) + '!'
+        body = main.main(query[0], query[1])
         html = "<!DOCTYPE html><html>"
         html += "<head><title>"
         html += "Response from Project 2"
@@ -59,6 +60,6 @@ class Project2Server(http.server.BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     PORT = 3280
-    server = http.server.HTTPServer(('IP GOES HERE', PORT), Project2Server)
+    server = http.server.HTTPServer(('160.10.208.17', PORT), Project2Server)
     print("Project 2 - Webserver running on port {}; Type <Ctrl-C> to stop server.".format(PORT))
     server.serve_forever()

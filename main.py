@@ -17,9 +17,11 @@ def calculate_subnet_ipv4(ip_address, net_mask):
     if utils.verify_ipv4(ip_address) and utils.verify_netmask(net_mask):
         if not "." in net_mask:
             mask = utils.convert_netmask(net_mask)
-            utils.calculate_ipv4_subnet(ip_address, mask)
+            subnet = utils.calculate_ipv4_subnet(ip_address, mask)
+            print("Subnet for IP: %s with netmask: %s is: %s" % (ip_address, mask, subnet))
         else:
-            utils.calculate_ipv4_subnet(ip_address, mask)
+            subnet = utils.calculate_ipv4_subnet(ip_address, net_mask)
+            print("Subnet for IP: %s with netmask: %s is: %s" % (ip_address, net_mask, subnet))
     else:
         print("IP Address or Net Mask is not Real")
 
