@@ -22,7 +22,7 @@ class Project2Server(http.server.BaseHTTPRequestHandler):
             self.log_message("resource: %s", path)
             resource = path[1:]
             print(resource)
-            if not resource.startswith('operation'):
+            if not resource.startswith('subnet'):
                 self.log_message("resource: %s", path)
                 self.send_error(404, 'Resource must begin with: operation')
 
@@ -46,6 +46,8 @@ class Project2Server(http.server.BaseHTTPRequestHandler):
         Parameters:
         query - the parameters provided to the query
         '''
+        ip_address = query[0]
+        net_mask = query[1]
         body = main.main(query[0], query[1])
         html = "<!DOCTYPE html><html>"
         html += "<head><title>"
