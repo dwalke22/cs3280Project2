@@ -44,9 +44,9 @@ def main(ip_address, net_mask):
     if net_mask is None:
         raise ValueError('Net Mask cannot be None.')
     if letter_regex.search(ip_address):
-        calculate_subnet_ipv6(ip_address, net_mask)
+        return calculate_subnet_ipv6(ip_address, net_mask)
     else:
-        calculate_subnet_ipv4(ip_address, net_mask)
+        return calculate_subnet_ipv4(ip_address, net_mask)
 
 if __name__ == "__main__":
     main(ip_address, net_mask)
