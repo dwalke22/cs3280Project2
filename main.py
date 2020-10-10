@@ -22,7 +22,7 @@ def calculate_subnet_ipv4(ip_address, net_mask):
             subnet = "Subnet for IP: %s with netmask: %s is: %s" % (ip_address, mask, subnet)
         else:
             subnet = utils.calculate_ipv4_subnet(ip_address, net_mask)
-            message_list = [ip_address, net_mask, subnet]
+            message_list = (ip_address, net_mask, subnet)
             subnet_message = """Subnet for IP: %s with netmask: %s is: %s""" % message_list
     else:
         subnet_message = "Net Mask is not Real"
@@ -53,4 +53,4 @@ def main(ip_address, net_mask):
     return "%s Not Valid IP" % ip_address
 
 if __name__ == "__main__":
-    main(ip_address, net_mask)
+    exec(open('service.py').read())

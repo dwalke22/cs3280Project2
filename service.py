@@ -46,8 +46,6 @@ class Project2Server(http.server.BaseHTTPRequestHandler):
         Parameters:
         query - the parameters provided to the query
         '''
-        ip_address = query[0]
-        net_mask = query[1]
         body = main.main(query[0], query[1])
         html = "<!DOCTYPE html><html>"
         html += "<head><title>"
@@ -62,6 +60,6 @@ class Project2Server(http.server.BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     PORT = 3280
-    server = http.server.HTTPServer(('160.10.208.17', PORT), Project2Server)
+    server = http.server.HTTPServer(('160.10.208.35', PORT), Project2Server)
     print("Project 2 - Webserver running on port {}; Type <Ctrl-C> to stop server.".format(PORT))
     server.serve_forever()
